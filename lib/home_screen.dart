@@ -25,6 +25,10 @@ class ProductItem {
   final String? discount;
   final String? description;
   final List<String> images;
+  final String? videoUrl;
+  final String? videoThumbnail;
+  final String? videoDuration;
+  final String? videoTitle;
 
   const ProductItem({
     required this.id,
@@ -44,6 +48,10 @@ class ProductItem {
     this.discount,
     this.description,
     this.images = const [],
+    this.videoUrl,
+    this.videoThumbnail,
+    this.videoDuration,
+    this.videoTitle,
   });
 }
 
@@ -76,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Merchandise",
   ];
 
-  // Complete catalog of IAKN Commerce products
+  // Complete catalog of IAKN Commerce products with 7-8 images and 1 video each (Shopee style)
   final List<ProductItem> _allProducts = const [
     ProductItem(
       id: "prod_1",
@@ -91,6 +99,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 120,
       icon: Icons.menu_book,
       iconColor: Colors.blue,
+      description:
+          "Buku referensi ilmiah karya kolaboratif dosen dan mahasiswa Program Studi Musik Gereja IAKN Ambon. Mengulas secara mendalam kekayaan etnomusikologi, ragam nyanyian liturgi kontekstual, dan instrumen tradisional khas Maluku dalam perspektif antropologi budaya Nusantara.",
+      images: [
+        "assets/images/produk/prod_1_img1.jpg",
+        "assets/images/produk/prod_1_img2.jpg",
+        "assets/images/produk/prod_1_img3.jpg",
+        "assets/images/produk/prod_1_img4.jpg",
+        "assets/images/produk/prod_1_img5.jpg",
+        "assets/images/produk/prod_1_img6.jpg",
+        "assets/images/produk/prod_1_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      videoThumbnail: "assets/images/produk/prod_1_video_thumb.jpg",
+      videoDuration: "0:35",
+      videoTitle: "Video Bedah Buku Antropologi Musik Maluku",
     ),
     ProductItem(
       id: "prod_2",
@@ -105,6 +128,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 85,
       icon: Icons.design_services,
       iconColor: Colors.purple,
+      description:
+          "Layanan pembuatan desain visual profesional oleh tim Kreatif Lab Mahasiswa IAKN. Melayani pembuatan poster seminar, spanduk dies natalis, banner kegiatan gerejawi, brosur, serta grafis media sosial dengan revisi fleksibel dan pengerjaan kilat 24 jam.",
+      images: [
+        "assets/images/produk/prod_2_img1.jpg",
+        "assets/images/produk/prod_2_img2.jpg",
+        "assets/images/produk/prod_2_img3.jpg",
+        "assets/images/produk/prod_2_img4.jpg",
+        "assets/images/produk/prod_2_img5.jpg",
+        "assets/images/produk/prod_2_img6.jpg",
+        "assets/images/produk/prod_2_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      videoThumbnail: "assets/images/produk/prod_2_video_thumb.jpg",
+      videoDuration: "0:28",
+      videoTitle: "Video Portofolio Desain & Proses Kreatif",
     ),
     ProductItem(
       id: "prod_3",
@@ -119,11 +157,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 25,
       icon: Icons.music_note,
       iconColor: Colors.deepOrange,
+      description:
+          "Instrumen musik perkusi tifa tradisional khas Maluku yang dipahat langsung oleh mahasiswa seni kriya kampus. Dibuat menggunakan kayu lenggua pilihan berkepadatan tinggi dan membran kulit alami yang menghasilkan resonansi suara autentik dan kuat untuk ibadah dan pertunjukan seni.",
       images: [
-        "assets/images/produk/tifa_1.jpg",
-        "assets/images/produk/tifa_2.jpg",
-        "assets/images/produk/tifa_3.jpg",
+        "assets/images/produk/prod_3_img1.jpg",
+        "assets/images/produk/prod_3_img2.jpg",
+        "assets/images/produk/prod_3_img3.jpg",
+        "assets/images/produk/prod_3_img4.jpg",
+        "assets/images/produk/prod_3_img5.jpg",
+        "assets/images/produk/prod_3_img6.jpg",
+        "assets/images/produk/prod_3_img7.jpg",
       ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      videoThumbnail: "assets/images/produk/prod_3_video_thumb.jpg",
+      videoDuration: "0:42",
+      videoTitle: "Video Uji Suara & Dentuman Akustik Tifa",
     ),
     ProductItem(
       id: "prod_4",
@@ -138,6 +186,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 42,
       icon: Icons.computer,
       iconColor: Colors.teal,
+      description:
+          "Paket perangkat ajar edukatif interaktif rancangan Laboratorium FKIP IAKN Ambon. Dilengkapi materi cerita Alkitab anak, lagu rohani interaktif, dan lembar aktivitas kreatif ramah anak usia dini.",
+      images: [
+        "assets/images/produk/prod_4_img1.jpg",
+        "assets/images/produk/prod_4_img2.jpg",
+        "assets/images/produk/prod_4_img3.jpg",
+        "assets/images/produk/prod_4_img4.jpg",
+        "assets/images/produk/prod_4_img5.jpg",
+        "assets/images/produk/prod_4_img6.jpg",
+        "assets/images/produk/prod_4_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      videoThumbnail: "assets/images/produk/prod_4_video_thumb.jpg",
+      videoDuration: "0:30",
+      videoTitle: "Video Cuplikan Game & Animasi Edukatif PAUD",
     ),
     ProductItem(
       id: "prod_5",
@@ -152,6 +215,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 82,
       icon: Icons.menu_book,
       iconColor: Colors.blue,
+      description:
+          "Karya ilmiah unggulan dosen IAKN Ambon yang membahas integrasi nilai-nilai kearifan lokal 'Pela Gandong' dengan teologi kontekstual kontemporer dalam membina harmoni dan persaudaraan masyarakat kepulauan.",
+      images: [
+        "assets/images/produk/prod_5_img1.jpg",
+        "assets/images/produk/prod_5_img2.jpg",
+        "assets/images/produk/prod_5_img3.jpg",
+        "assets/images/produk/prod_5_img4.jpg",
+        "assets/images/produk/prod_5_img5.jpg",
+        "assets/images/produk/prod_5_img6.jpg",
+        "assets/images/produk/prod_5_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      videoThumbnail: "assets/images/produk/prod_5_video_thumb.jpg",
+      videoDuration: "0:45",
+      videoTitle: "Video Ulasan Akademis bersama Dosen Penulis",
     ),
     ProductItem(
       id: "prod_6",
@@ -169,6 +247,22 @@ class _HomeScreenState extends State<HomeScreen> {
       isFlashSale: true,
       oldPrice: "165rb",
       discount: "-40%",
+      description:
+          "Hoodie edisi eksklusif perayaan Dies Natalis IAKN Ambon ke-25. Dibuat dari bahan premium cotton fleece 330 gsm yang lembut, hangat, dan nyaman dipakai kuliah sehari-hari dengan sablon grafis logo IAKN tahan lama.",
+      images: [
+        "assets/images/produk/prod_6_img1.jpg",
+        "assets/images/produk/prod_6_img2.jpg",
+        "assets/images/produk/prod_6_img3.jpg",
+        "assets/images/produk/prod_6_img4.jpg",
+        "assets/images/produk/prod_6_img5.jpg",
+        "assets/images/produk/prod_6_img6.jpg",
+        "assets/images/produk/prod_6_img7.jpg",
+        "assets/images/produk/prod_6_img8.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      videoThumbnail: "assets/images/produk/prod_6_video_thumb.jpg",
+      videoDuration: "0:25",
+      videoTitle: "Video Try-On & Uji Kualitas Bahan Hoodie",
     ),
     ProductItem(
       id: "prod_7",
@@ -186,6 +280,21 @@ class _HomeScreenState extends State<HomeScreen> {
       isFlashSale: true,
       oldPrice: "90rb",
       discount: "-50%",
+      description:
+          "Tumbler vacuum flask ramah lingkungan edisi Dies Natalis IAKN Ambon. Menjaga suhu air dingin 24 jam dan panas 12 jam, dilengkapi ukiran grafir laser presisi logo kebanggaan IAKN.",
+      images: [
+        "assets/images/produk/prod_7_img1.jpg",
+        "assets/images/produk/prod_7_img2.jpg",
+        "assets/images/produk/prod_7_img3.jpg",
+        "assets/images/produk/prod_7_img4.jpg",
+        "assets/images/produk/prod_7_img5.jpg",
+        "assets/images/produk/prod_7_img6.jpg",
+        "assets/images/produk/prod_7_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4",
+      videoThumbnail: "assets/images/produk/prod_7_video_thumb.jpg",
+      videoDuration: "0:20",
+      videoTitle: "Video Uji Ketahanan Suhu & Anti Bocor Tumbler",
     ),
     ProductItem(
       id: "prod_8",
@@ -203,6 +312,21 @@ class _HomeScreenState extends State<HomeScreen> {
       isFlashSale: true,
       oldPrice: "100rb",
       discount: "-50%",
+      description:
+          "Suvenir miniatur tifa ukuran 20cm dengan ukiran etnik khas Maluku buatan tangan Sanggar Seni & Kriya Kampus. Sangat pas untuk cenderamata wisuda dan oleh-oleh tamu kehormatan.",
+      images: [
+        "assets/images/produk/prod_8_img1.jpg",
+        "assets/images/produk/prod_8_img2.jpg",
+        "assets/images/produk/prod_8_img3.jpg",
+        "assets/images/produk/prod_8_img4.jpg",
+        "assets/images/produk/prod_8_img5.jpg",
+        "assets/images/produk/prod_8_img6.jpg",
+        "assets/images/produk/prod_8_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      videoThumbnail: "assets/images/produk/prod_8_video_thumb.jpg",
+      videoDuration: "0:22",
+      videoTitle: "Video 360 Derajat Rotasi Miniatur Tifa",
     ),
     ProductItem(
       id: "prod_9",
@@ -217,6 +341,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 64,
       icon: Icons.translate,
       iconColor: Colors.purple,
+      description:
+          "Layanan penerjemahan naskah ilmiah, artikel jurnal, skripsi, dan abstrak bilingual (Indonesia - Inggris) oleh tim ahli Unit Bahasa IAKN Ambon dengan akurasi tata bahasa akademis terjamin.",
+      images: [
+        "assets/images/produk/prod_9_img1.jpg",
+        "assets/images/produk/prod_9_img2.jpg",
+        "assets/images/produk/prod_9_img3.jpg",
+        "assets/images/produk/prod_9_img4.jpg",
+        "assets/images/produk/prod_9_img5.jpg",
+        "assets/images/produk/prod_9_img6.jpg",
+        "assets/images/produk/prod_9_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      videoThumbnail: "assets/images/produk/prod_9_video_thumb.jpg",
+      videoDuration: "0:32",
+      videoTitle: "Video Prosedur & Standar Mutu Terjemahan Naskah",
     ),
     ProductItem(
       id: "prod_10",
@@ -231,6 +370,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 53,
       icon: Icons.shopping_bag,
       iconColor: Colors.pink,
+      description:
+          "Totebag kanvas tebal ramah lingkungan berhias motif tenun khas Maluku persembahan BEM IAKN Ambon. Cocok untuk membawa buku kuliah, laptop 14 inch, dan perlengkapan harian.",
+      images: [
+        "assets/images/produk/prod_10_img1.jpg",
+        "assets/images/produk/prod_10_img2.jpg",
+        "assets/images/produk/prod_10_img3.jpg",
+        "assets/images/produk/prod_10_img4.jpg",
+        "assets/images/produk/prod_10_img5.jpg",
+        "assets/images/produk/prod_10_img6.jpg",
+        "assets/images/produk/prod_10_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+      videoThumbnail: "assets/images/produk/prod_10_video_thumb.jpg",
+      videoDuration: "0:26",
+      videoTitle: "Video Uji Kapasitas & Ketahanan Muatan Totebag",
     ),
     ProductItem(
       id: "prod_11",
@@ -245,6 +399,22 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 19,
       icon: Icons.music_note,
       iconColor: Colors.green,
+      description:
+          "Gitar akustik handmade hasil rancang bangun mahasiswa Prodi Pendidikan Seni Musik IAKN Ambon. Menggunakan kayu spruce solid pilihan dengan intonasi nada presisi dan neck ergonomis rosewood.",
+      images: [
+        "assets/images/produk/prod_11_img1.jpg",
+        "assets/images/produk/prod_11_img2.jpg",
+        "assets/images/produk/prod_11_img3.jpg",
+        "assets/images/produk/prod_11_img4.jpg",
+        "assets/images/produk/prod_11_img5.jpg",
+        "assets/images/produk/prod_11_img6.jpg",
+        "assets/images/produk/prod_11_img7.jpg",
+        "assets/images/produk/prod_11_img8.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      videoThumbnail: "assets/images/produk/prod_11_video_thumb.jpg",
+      videoDuration: "0:48",
+      videoTitle: "Video Soundcheck Akustik & Petikan Melodi Gitar",
     ),
     ProductItem(
       id: "prod_12",
@@ -259,6 +429,21 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 31,
       icon: Icons.computer,
       iconColor: Colors.teal,
+      description:
+          "Aplikasi multimedia interaktif panduan tata ibadah dan aransemen musik liturgi digital karya Laboratorium Komputer IAKN Ambon. Dilengkapi partitur digital dan simulasi paduan suara 4 suara.",
+      images: [
+        "assets/images/produk/prod_12_img1.jpg",
+        "assets/images/produk/prod_12_img2.jpg",
+        "assets/images/produk/prod_12_img3.jpg",
+        "assets/images/produk/prod_12_img4.jpg",
+        "assets/images/produk/prod_12_img5.jpg",
+        "assets/images/produk/prod_12_img6.jpg",
+        "assets/images/produk/prod_12_img7.jpg",
+      ],
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      videoThumbnail: "assets/images/produk/prod_12_video_thumb.jpg",
+      videoDuration: "0:40",
+      videoTitle: "Video Demo Navigasi & Fitur Partitur Digital",
     ),
   ];
 
@@ -828,7 +1013,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                         decoration: BoxDecoration(
                           color: _selectedSort != "Semua"
-                              ? darkBlue.withOpacity(0.1)
+                              ? darkBlue.withValues(alpha: 0.1)
                               : Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
@@ -1601,6 +1786,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              if (product.videoUrl != null || product.videoThumbnail != null)
+                Positioned(
+                  bottom: 6,
+                  right: 6,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEE4D2D).withValues(alpha: 0.9),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.play_arrow, color: Colors.white, size: 10),
+                        SizedBox(width: 2),
+                        Text(
+                          "Video",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
             ],
           ),
           Expanded(

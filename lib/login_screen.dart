@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                         width: double.infinity,
                         margin: EdgeInsets.symmetric(vertical: 16),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(

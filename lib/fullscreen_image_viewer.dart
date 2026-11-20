@@ -33,12 +33,46 @@ class _FullscreenImageViewerState extends State<FullscreenImageViewer> {
     super.dispose();
   }
 
+  Widget _buildImage(String path) {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return Image.network(
+        path,
+        fit: BoxFit.contain,
+        loadingBuilder: (context, child, progress) {
+          if (progress == null) return child;
+          return const Center(child: CircularProgressIndicator(color: Colors.white));
+        },
+        errorBuilder: (context, error, stackTrace) => _buildErrorPlaceholder(),
+      );
+    } else {
+      return Image.asset(
+        path,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) => _buildErrorPlaceholder(),
+      );
+    }
+  }
+
+  Widget _buildErrorPlaceholder() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Icon(Icons.broken_image, color: Colors.white54, size: 64),
+        SizedBox(height: 8),
+        Text(
+          "Gambar gagal dimuat",
+          style: TextStyle(color: Colors.white54, fontSize: 12),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black.withOpacity(0.8),
+        backgroundColor: Colors.black.withValues(alpha: 0.85),
         iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
         title: Column(
@@ -78,43 +112,53 @@ class _FullscreenImageViewerState extends State<FullscreenImageViewer> {
                 minScale: 0.8,
                 maxScale: 4.0,
                 child: Center(
-                  child: Image.asset(
-                    widget.images[index],
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.broken_image, color: Colors.white54, size: 64),
-                        SizedBox(height: 8),
-                        Text(
-                          "Gambar gagal dimuat",
-                          style: TextStyle(color: Colors.white54, fontSize: 12),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: _buildImage(widget.images[index]),
                 ),
               );
             },
           ),
+          // Shopee-style bottom thumbnail strip
           if (widget.images.length > 1)
             SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(widget.images.length, (index) {
+              child: Container(
+                height: 60,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: widget.images.length,
+                  itemBuilder: (context, index) {
                     final isSelected = index == _currentIndex;
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      width: isSelected ? 16 : 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: isSelected ? Colors.white : Colors.white38,
-                        borderRadius: BorderRadius.circular(4),
+                    final imgPath = widget.images[index];
+                    return GestureDetector(
+                      onTap: () {
+                        _pageController.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                      child: Container(
+                        width: 48,
+                        height: 48,
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: isSelected ? Colors.orangeAccent : Colors.white30,
+                            width: isSelected ? 2.5 : 1.0,
+                          ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: imgPath.startsWith('http')
+                              ? Image.network(imgPath, fit: BoxFit.cover)
+                              : Image.asset(imgPath, fit: BoxFit.cover),
+                        ),
                       ),
                     );
-                  }),
+                  },
                 ),
               ),
             ),
@@ -123,4 +167,3 @@ class _FullscreenImageViewerState extends State<FullscreenImageViewer> {
     );
   }
 }
-
